@@ -1,0 +1,19 @@
+.links * {
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+    padding: 25px;
+    margin: 20px 0;
+    margin-right: 85px;
+    border: solid 2px;
+    border-radius: 20px;
+    color: black;
+    background-color: whitesmoke;
+}
+
+tbody td {
+    border: solid 1px;
+    border-radius: 7px;
+    padding: 6px;
+    background-color: whitesmoke;
+}
