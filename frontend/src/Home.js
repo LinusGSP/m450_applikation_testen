@@ -1,10 +1,10 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import LearnSetInfo from "./LearnSetInfo"
-import './Styling/Home.css' 
+import './Styling/Home.css'
 
-export default class Home extends React.Component{
-    constructor(){
+export default class Home extends React.Component {
+    constructor() {
         super()
         this.state = {
             learnsets: []
@@ -13,17 +13,17 @@ export default class Home extends React.Component{
 
     componentDidMount() {
         // fetch all learnset data
-        fetch("http://localhost:8080/api/learnset")
-        .then(response => response.json())
-        .then(jsonData => {this.setState({ learnsets : jsonData}); console.log(this.state);})      
+        fetch("http://localhost:8080/api/v1/learnset")
+            .then(response => response.json())
+            .then(jsonData => { this.setState({ learnsets: jsonData }); console.log(this.state); })
     }
 
-    render(){
+    render() {
 
         // map over every learnset 
         let display_sets = this.state.learnsets.map(e => {
             return (
-                <LearnSetInfo key={e.id} learnSet={e} classNames="card hover-size"/>
+                <LearnSetInfo key={e.id} learnSet={e} classNames="card hover-size" />
             );
         })
 
@@ -34,7 +34,7 @@ export default class Home extends React.Component{
                 </div>
                 <p className="center">Wähle eine Lernset aus oder <Link to="/create">erstelle</Link> dein eigenes</p>
                 <div className="grid-align">
-                    { display_sets }
+                    {display_sets}
                 </div>
             </div>
         )

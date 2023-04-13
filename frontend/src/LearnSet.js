@@ -17,13 +17,13 @@ class LearnSetComponent extends React.Component {
     componentDidMount() {
         // Get Learnset and word data
         Promise.all([
-            fetch("http://localhost:8080/api/learnset/" + this.state.id)                // Fetch Information about the learnset
+            fetch("http://localhost:8080/api/v1/learnset/" + this.state.id)                // Fetch Information about the learnset
                 .then(response => response.json())
                 .then(jsonData => {
                     console.log(jsonData);
                     this.setState({ learnSet: jsonData })
                 }),
-            fetch("http://localhost:8080/api/word/set/" + this.state.id)                // Fetch all words contained in the learnset
+            fetch("http://localhost:8080/api/v1/word/set/" + this.state.id)                // Fetch all words contained in the learnset
                 .then(response => response.json())
                 .then(jsonData => this.setState({ words: jsonData }))
         ]).catch(() => window.location.assign("/notfound"))                             // If the words set is not found redirect to page not found
@@ -36,7 +36,7 @@ class LearnSetComponent extends React.Component {
             method: "DELETE",
         }
 
-        fetch("http://localhost:8080/api/word/" + word.id, requestData)          // Delete word from Database
+        fetch("http://localhost:8080/api/v1/word/" + word.id, requestData)          // Delete word from Database
             .then(() =>
                 this.setState({
                     words: this.state.words                                         // Remove word from state
@@ -100,7 +100,7 @@ class LearnSetComponent extends React.Component {
             body: JSON.stringify(learnWord)                                   // !!! Stringify !!!
         }
 
-        fetch("http://localhost:8080/api/word", requestData)
+        fetch("http://localhost:8080/api/v1/word", requestData)
             .then(response => response.json())
             .then(jsonData => {
                 this.setState((prevState) => {
@@ -137,7 +137,7 @@ class LearnSetComponent extends React.Component {
             body: JSON.stringify(learnWord)                                   // !!! Stringify !!!
         }
 
-        fetch("http://localhost:8080/api/word", requestData)
+        fetch("http://localhost:8080/api/v1/word", requestData)
             .then(response => response.json())
             .then(word => {
                 this.setState((prevState) => {

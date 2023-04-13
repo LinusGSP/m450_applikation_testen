@@ -1,8 +1,8 @@
 import React from "react";
 import './Styling/Create.css'
 
-export default class CreateLearnSet extends React.Component{
-    constructor(props){
+export default class CreateLearnSet extends React.Component {
+    constructor(props) {
         super(props)
         this.state = {
             languages: [],
@@ -10,10 +10,10 @@ export default class CreateLearnSet extends React.Component{
         }
     }
 
-    componentDidMount(){
-        fetch("http://localhost:8080/api/language")
+    componentDidMount() {
+        fetch("http://localhost:8080/api/v1/language")
             .then(response => response.json())
-            .then(data => this.setState({languages: data}))
+            .then(data => this.setState({ languages: data }))
     }
 
 
@@ -23,9 +23,9 @@ export default class CreateLearnSet extends React.Component{
         let lang2_id = document.getElementById("language2").value // gets inputed second lang
 
         // Validation
-        if (lang1_id === lang2_id) {return alert("Languages cant be equal")}
-        if (learnSetName === "") {return alert("Learnsetname cant be empty")}
-       
+        if (lang1_id === lang2_id) { return alert("Languages cant be equal") }
+        if (learnSetName === "") { return alert("Learnsetname cant be empty") }
+
         // new learnSet object
         let newLearnSet = {
             "name": learnSetName,
@@ -36,18 +36,18 @@ export default class CreateLearnSet extends React.Component{
                 "id": lang2_id
             }
         }
-        
 
-        fetch("http://localhost:8080/api/learnset", {
-            method: "POST", 
+
+        fetch("http://localhost:8080/api/v1/learnset", {
+            method: "POST",
             body: JSON.stringify(newLearnSet), // !!! Stringify !!!
-            headers: {'Content-Type': 'application/json'}
+            headers: { 'Content-Type': 'application/json' }
         })
-        
+
         window.location.assign("/") // send back to home page
     }
 
-    render(){
+    render() {
 
         // the language selector
         let language1Options = this.state.languages.map((e, i) => { return <option key={i} value={e.id}>{e.name}</option> })
@@ -62,19 +62,19 @@ export default class CreateLearnSet extends React.Component{
         // dropdown
         let inputLanguage = <div className="grid-align">
 
-                <div className="dropdown">
-                    <p>First Language: </p>
-                    <select id="language1">
-                        {language1Options}
-                    </select>
-                </div>
-                <div className="dropdown">
-                    <p>Second Language: </p>
-                    <select id="language2">
-                        {language2Options}
-                    </select>
+            <div className="dropdown">
+                <p>First Language: </p>
+                <select id="language1">
+                    {language1Options}
+                </select>
+            </div>
+            <div className="dropdown">
+                <p>Second Language: </p>
+                <select id="language2">
+                    {language2Options}
+                </select>
 
-                </div>
+            </div>
 
         </div>
 
