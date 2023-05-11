@@ -53,18 +53,22 @@ public class LanguageController {
     /**
      * This method creates a new language.
      *
-     * @param language The language to be created.
+     * @param languageDTO The language to be created.
      * @return Successful
      */
     @PostMapping(path = "")
-    public ResponseEntity<String> createLanguage(@Valid @RequestBody Language language) {
+    public ResponseEntity<String> createLanguage(@Valid @RequestBody LanguageDTO languageDTO) {
         try {
+            Language language = new Language();
+            language.setName(languageDTO.getName());
             languageRepository.save(language);
         } catch (Exception e) {
-            throw new LanguageFailedToSaveException(language.getName());
+            throw new LanguageFailedToSaveException(languageDTO.getName());
         }
+
         return ResponseEntity.ok("Success: saved");
     }
+
 
     /**
      * This method deletes a language.

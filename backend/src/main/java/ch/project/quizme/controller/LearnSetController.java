@@ -1,7 +1,9 @@
 package ch.project.quizme.controller;
 
+import ch.project.quizme.databases.Language;
 import ch.project.quizme.databases.LearnSet;
 import ch.project.quizme.exceptions.LanguageIdenticalException;
+import ch.project.quizme.exceptions.LanguageNotFoundException;
 import ch.project.quizme.exceptions.LearnSetNotFoundException;
 import ch.project.quizme.exceptions.LearnWordFailedToSaveException;
 import ch.project.quizme.repository.LanguageRepository;
@@ -57,22 +59,31 @@ public class LearnSetController {
     /**
      * This method creates a new learnSet.
      *
-     * @param learnSet The learnSet to be created.
      * @return Successful.
      */
     @PostMapping(path = "")
-    public ResponseEntity<String> createLearnSet(@Valid @RequestBody LearnSet learnSet) {
-        if (Objects.equals(learnSet.getLanguage1().getId(), learnSet.getLanguage2().getId())) {
-            throw new LanguageIdenticalException(learnSet.getLanguage1().getId(), learnSet.getLanguage2().getId());
+    public ResponseEntity<String> createLearnSet(@Valid @RequestBody LearnSetDTO learnSetDTO) {
+        if (Objects.equals(learnSetDTO.getLanguage1Id(), learnSetDTO.getLanguage2Id())) {
+            throw new LanguageIdenticalException(learnSetDTO.getLanguage1Id(), learnSetDTO.getLanguage2Id());
         }
 
         try {
+            LearnSet learnSet = new LearnSet();
+            Language language1 = languageRepository.findById(learnSetDTO.getLanguage1Id())
+                    .orElseThrow(() -> new LanguageNotFoundException(learnSetDTO.getLanguage1Id()));
+            Language language2 = languageRepository.findById(learnSetDTO.getLanguage2Id())
+                    .orElseThrow(() -> new LanguageNotFoundException(learnSetDTO.getLanguage2Id()));
+
+            learnSet.setLanguage1(language1);
+            learnSet.setLanguage2(language2);
             learnSetRepository.save(learnSet);
         } catch (Exception e) {
             throw new LearnWordFailedToSaveException();
         }
+
         return ResponseEntity.ok("Success: saved");
     }
+
 
     /**
      * This method deletes a learnSet.

@@ -67,7 +67,6 @@ public class LearnWordController {
      */
     @GetMapping(path = "/set/{id}")
     public ResponseEntity<Iterable<LearnWord>> getLearnSetWords(@PathVariable("id") Integer id) {
-        learnSetRepository.findById(id).orElseThrow(() -> new LearnSetNotFoundException(id));
         Iterable<LearnWord> words = learnWordRepository.findByLearnSetId(id);
         return ResponseEntity.ok(words);
     }
@@ -75,11 +74,15 @@ public class LearnWordController {
     /**
      * This method creates a new learnWord.
      *
-     * @param learnWord The learnWord to be created.
+     * @param learnWordDTO The learnWord to be created.
      * @return The created learnWord
      */
     @PostMapping(path = "")
-    public ResponseEntity<LearnWord> createNewWord(@Valid @RequestBody LearnWord learnWord) {
+    public ResponseEntity<LearnWord> createNewWord(@Valid @RequestBody LearnWordDTO learnWordDTO) {
+        LearnWord learnWord = new LearnWord();
+        learnWord.setLearnSetId(learnWordDTO.getLearnSetId());
+        learnWord.setWord(learnWordDTO.getWord1());
+
         LearnWord word;
         try {
             word = learnWordRepository.save(learnWord);
@@ -87,6 +90,7 @@ public class LearnWordController {
         } catch (Exception e) {
             throw new LearnWordFailedToSaveException();
         }
+
         return ResponseEntity.ok(word);
     }
 
@@ -109,21 +113,24 @@ public class LearnWordController {
     /**
      * This method edits an existing learnWord.
      *
-     * @param learnWord The edited learnWord.
+     * @param learnWordUpdateDTO The edited learnWord.
      * @return The newly updated learnWord.
      */
     @PutMapping(path = "")
-    public ResponseEntity<LearnWord> updateWord(@Valid @RequestBody LearnWord learnWord) {
-        int id = learnWord.getId();
+    public ResponseEntity<LearnWord> updateWord(@Valid @RequestBody LearnWordUpdateDTO learnWordUpdateDTO) {
+        int id = learnWordUpdateDTO.getId();
+
         LearnWord updatedWord = learnWordRepository.findById(id).orElseThrow(() -> new LanguageNotFoundException(id));
 
-        updatedWord.setWord(learnWord.getWord());
-        updatedWord.setTranslation(learnWord.getTranslation());
+        updatedWord.setWord(learnWordUpdateDTO.getWord());
+        updatedWord.setTranslation(learnWordUpdateDTO.getTranslation());
+
         learnWordRepository.save(updatedWord);
         updateLearnSetLastEdited(updatedWord.getLearnSetId());
 
         return ResponseEntity.ok(updatedWord);
     }
+
 
     /**
      * This method deletes a learnWord.
