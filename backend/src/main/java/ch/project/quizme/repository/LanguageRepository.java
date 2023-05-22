@@ -9,6 +9,7 @@ import org.springframework.data.repository.CrudRepository;
  * @author Linus Schönbächler
  * @version 1.0
  * @since 2022-10-03
+ * f
  */
 public interface LanguageRepository extends CrudRepository<Language, Integer> {
 }

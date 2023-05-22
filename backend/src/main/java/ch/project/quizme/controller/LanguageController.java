@@ -21,7 +21,7 @@ import java.util.Optional;
  * @since 2022-10-03
  */
 @RestController
-@RequestMapping(path = "/api/language")
+@RequestMapping(path = "/api/v1/language")
 public class LanguageController {
 
     @Autowired

@@ -25,7 +25,7 @@ import java.util.Optional;
  * @since 2022-10-03
  */
 @RestController
-@RequestMapping(path = "/api/learnset")
+@RequestMapping(path = "/api/v1/learnset")
 public class LearnSetController {
 
     @Autowired

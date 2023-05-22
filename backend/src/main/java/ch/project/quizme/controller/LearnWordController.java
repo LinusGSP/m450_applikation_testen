@@ -27,7 +27,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping(path = "/api/word")
+@RequestMapping(path = "/api/v1/word")
 public class LearnWordController {
 
     @Autowired
