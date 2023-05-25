@@ -12,15 +12,13 @@ export default function LearnSetInfo(props) {
     const lastEdited = new Date(learnSet.lastEdited)
 
     const deleteLearnSet = (idLearnSet) => {
-        fetch(`http://localhost:8080/api/learnset/` + idLearnSet, {
-         
-        })
+        fetch(`http://localhost:8080/api/learnset/` + idLearnSet, {method: 'DELETE'})
+            .catch(e => console.log(e))
+        window.location.assign("/")
     }
      
 
     return (
-        
-
         <div className={classNames} onClick={() => window.location.href = `http://localhost:3000/${learnSet.id}`} style={{ backgroundColor: randomColor(), position: "relative" }}>
           <div className="grid-container">
             <div className="item-1">
@@ -28,9 +26,9 @@ export default function LearnSetInfo(props) {
                 {learnSet.name} <br /> {learnSet.language1?.flag} ➜ {learnSet.language2?.flag}
               </h1>
               <button style={{ backgroundColor: "red", borderRadius: "50%", border: "2px solid black", position: "absolute", top: "1.25rem", right: "1.25rem" }} onClick={(e) => {
-                e.stopPropagation();
-                deleteLearnSet(learnSet.id);
-                
+                  console.log(e);
+                  deleteLearnSet(learnSet.id);
+                e.stopPropagation()
               }}>X</button>
             </div>
             <img />
