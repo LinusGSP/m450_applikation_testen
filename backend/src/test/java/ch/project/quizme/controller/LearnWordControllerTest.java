@@ -46,10 +46,13 @@ class LearnWordControllerTest {
      */
     @Test
     void testCreateNewWords() {
-
-        assertThrows(LearnWordFailedToSaveException.class,
-                () -> (new LearnWordController()).createNewWords(mock(Iterable.class)));
+        assertThrows(LearnWordFailedToSaveException.class, this::invokeCreateNewWords);
     }
+
+    private void invokeCreateNewWords() throws LearnWordFailedToSaveException {
+        new LearnWordController().createNewWords(mock(Iterable.class));
+    }
+
 
     /**
      * Method under test: {@link LearnWordController#createNewWord(LearnWordDTO)}

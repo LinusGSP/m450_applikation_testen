@@ -53,18 +53,6 @@ class ControllerAdvisorTest {
      * Method under test: {@link ControllerAdvisor#handleMissingServletRequestParameter(MissingServletRequestParameterException, HttpHeaders, HttpStatus, WebRequest)}
      */
     @Test
-    @Disabled("TODO: Complete this test")
-    void testHandleMissingServletRequestParameter2() {
-        ControllerAdvisor controllerAdvisor = new ControllerAdvisor();
-        HttpHeaders headers = new HttpHeaders();
-        controllerAdvisor.handleMissingServletRequestParameter(null, headers, HttpStatus.CONTINUE,
-                new ServletWebRequest(new MockHttpServletRequest()));
-    }
-
-    /**
-     * Method under test: {@link ControllerAdvisor#handleMissingServletRequestParameter(MissingServletRequestParameterException, HttpHeaders, HttpStatus, WebRequest)}
-     */
-    @Test
     void testHandleMissingServletRequestParameter3() {
         ControllerAdvisor controllerAdvisor = new ControllerAdvisor();
         MissingServletRequestParameterException ex = new MissingServletRequestParameterException("Parameter Name",
@@ -137,22 +125,6 @@ class ControllerAdvisorTest {
         assertTrue(actualHandleMissingServletRequestParameterResult.getHeaders().isEmpty());
     }
 
-    /**
-     * Method under test: {@link ControllerAdvisor#handleMethodArgumentNotValid(MethodArgumentNotValidException, HttpHeaders, HttpStatus, WebRequest)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testHandleMethodArgumentNotValid() {
-        ControllerAdvisor controllerAdvisor = new ControllerAdvisor();
-        MethodParameter parameter = new MethodParameter((Constructor<?>) null, 1);
-
-        MethodArgumentNotValidException ex = new MethodArgumentNotValidException(parameter,
-                new BindException("Target", "Object Name"));
-
-        HttpHeaders headers = new HttpHeaders();
-        controllerAdvisor.handleMethodArgumentNotValid(ex, headers, HttpStatus.CONTINUE,
-                new ServletWebRequest(new MockHttpServletRequest()));
-    }
 
     /**
      * Method under test: {@link ControllerAdvisor#handleMethodArgumentNotValid(MethodArgumentNotValidException, HttpHeaders, HttpStatus, WebRequest)}
@@ -171,18 +143,7 @@ class ControllerAdvisorTest {
         assertTrue(actualHandleMethodArgumentNotValidResult.getHeaders().isEmpty());
     }
 
-    /**
-     * Method under test: {@link ControllerAdvisor#handleMethodArgumentNotValid(MethodArgumentNotValidException, HttpHeaders, HttpStatus, WebRequest)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testHandleMethodArgumentNotValid3() {
 
-        ControllerAdvisor controllerAdvisor = new ControllerAdvisor();
-        HttpHeaders headers = new HttpHeaders();
-        controllerAdvisor.handleMethodArgumentNotValid(null, headers, HttpStatus.CONTINUE,
-                new ServletWebRequest(new MockHttpServletRequest()));
-    }
 
     /**
      * Method under test: {@link ControllerAdvisor#handleLanguageFailedToSaveException(LanguageFailedToSaveException)}
@@ -198,15 +159,6 @@ class ControllerAdvisorTest {
         assertTrue(actualHandleLanguageFailedToSaveExceptionResult.getHeaders().isEmpty());
     }
 
-    /**
-     * Method under test: {@link ControllerAdvisor#handleLanguageFailedToSaveException(LanguageFailedToSaveException)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testHandleLanguageFailedToSaveException2() {
-
-        (new ControllerAdvisor()).handleLanguageFailedToSaveException(null);
-    }
 
     /**
      * Method under test: {@link ControllerAdvisor#handleLanguageIdenticalException(LanguageIdenticalException)}
@@ -222,15 +174,6 @@ class ControllerAdvisorTest {
         assertTrue(actualHandleLanguageIdenticalExceptionResult.getHeaders().isEmpty());
     }
 
-    /**
-     * Method under test: {@link ControllerAdvisor#handleLanguageIdenticalException(LanguageIdenticalException)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testHandleLanguageIdenticalException2() {
-
-        (new ControllerAdvisor()).handleLanguageIdenticalException(null);
-    }
 
     /**
      * Method under test: {@link ControllerAdvisor#handleLanguageNotFoundException(LanguageNotFoundException)}
@@ -245,15 +188,7 @@ class ControllerAdvisorTest {
         assertTrue(actualHandleLanguageNotFoundExceptionResult.getHeaders().isEmpty());
     }
 
-    /**
-     * Method under test: {@link ControllerAdvisor#handleLanguageNotFoundException(LanguageNotFoundException)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testHandleLanguageNotFoundException2() {
 
-        (new ControllerAdvisor()).handleLanguageNotFoundException(null);
-    }
 
     /**
      * Method under test: {@link ControllerAdvisor#handleInvalidLanguageFlagException(InvalidLanguageFlagException)}
@@ -296,16 +231,6 @@ class ControllerAdvisorTest {
     }
 
     /**
-     * Method under test: {@link ControllerAdvisor#handleLearnSetFailedToSaveException(LearnSetFailedToSaveException)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testHandleLearnSetFailedToSaveException2() {
-
-        (new ControllerAdvisor()).handleLearnSetFailedToSaveException(null);
-    }
-
-    /**
      * Method under test: {@link ControllerAdvisor#handleLearnSetNotFoundException(LearnSetNotFoundException)}
      */
     @Test
@@ -318,15 +243,6 @@ class ControllerAdvisorTest {
         assertTrue(actualHandleLearnSetNotFoundExceptionResult.getHeaders().isEmpty());
     }
 
-    /**
-     * Method under test: {@link ControllerAdvisor#handleLearnSetNotFoundException(LearnSetNotFoundException)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testHandleLearnSetNotFoundException2() {
-
-        (new ControllerAdvisor()).handleLearnSetNotFoundException(null);
-    }
 
     /**
      * Method under test: {@link ControllerAdvisor#handleWordFailedToSaveException(LearnWordFailedToSaveException)}
@@ -354,14 +270,6 @@ class ControllerAdvisorTest {
         assertTrue(actualHandleWordNotFoundExceptionResult.getHeaders().isEmpty());
     }
 
-    /**
-     * Method under test: {@link ControllerAdvisor#handleWordNotFoundException(LearnWordNotFoundException)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testHandleWordNotFoundException2() {
 
-        (new ControllerAdvisor()).handleWordNotFoundException(null);
-    }
 }
 

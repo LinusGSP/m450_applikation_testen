@@ -99,16 +99,6 @@ class LearnSetControllerTest {
     }
 
     /**
-     * Method under test: {@link LearnSetController#getLearnSetById(Integer)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testGetLearnSetById() {
-
-        (new LearnSetController()).getLearnSetById(1);
-    }
-
-    /**
      * Method under test: {@link LearnSetController#deleteLearnSetById(Integer)}
      */
     @Test

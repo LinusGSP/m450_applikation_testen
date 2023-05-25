@@ -11,15 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 class LearnSetTest {
-    /**
-     * Method under test: {@link LearnSet#setCreationDate()}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testSetCreationDate() {
-
-        (new LearnSet()).setCreationDate();
-    }
 
     /**
      * Method under test: {@link LearnSet#setCreationDate()}
@@ -40,16 +31,6 @@ class LearnSetTest {
         verify(language1).setFlag(Mockito.<String>any());
         verify(language1).setId(Mockito.<Integer>any());
         verify(language1).setName(Mockito.<String>any());
-    }
-
-    /**
-     * Method under test: {@link LearnSet#setLastEdited()}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testSetLastEdited() {
-
-        (new LearnSet()).setLastEdited();
     }
 
     /**
