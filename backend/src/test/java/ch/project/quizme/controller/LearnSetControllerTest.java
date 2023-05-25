@@ -6,13 +6,13 @@ import static org.mockito.Mockito.when;
 
 import ch.project.quizme.databases.Language;
 import ch.project.quizme.databases.LearnSet;
+import ch.project.quizme.databases.LearnWord;
 import ch.project.quizme.repository.LanguageRepository;
 import ch.project.quizme.repository.LearnSetRepository;
+import ch.project.quizme.repository.LearnWordRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Optional;
-
-import org.junit.jupiter.api.Disabled;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,6 +39,9 @@ class LearnSetControllerTest {
 
     @MockBean
     private LearnSetRepository learnSetRepository;
+
+    @MockBean
+    private LearnWordRepository learnWordRepository;
 
     /**
      * Method under test: {@link LearnSetController#createLearnSet(LearnSetDTO)}
@@ -126,5 +129,24 @@ class LearnSetControllerTest {
                 .perform(requestBuilder);
         actualPerformResult.andExpect(MockMvcResultMatchers.status().is(406));
     }
+
+
+    /**
+     * Method under test: {@link LearnSetController#deleteLearnSetById(Integer)}
+     */
+    @Test
+    void testDeleteLearnSetById2() throws Exception {
+        doNothing().when(learnSetRepository).deleteById(Mockito.<Integer>any());
+        when(learnWordRepository.findByLearnSetId(Mockito.<Integer>any())).thenReturn(mock(Iterable.class));
+        doNothing().when(learnWordRepository).deleteAll(Mockito.<Iterable<LearnWord>>any());
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/api/learnset/{id}", 1);
+        MockMvcBuilders.standaloneSetup(learnSetController)
+                .build()
+                .perform(requestBuilder)
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"))
+                .andExpect(MockMvcResultMatchers.content().string("Success: deleted"));
+    }
+
 }
 
