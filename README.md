@@ -1,5 +1,3 @@
-# m450_applikation_testen
-
 # Voraussetzungen
 
 ### MySQL vor dem start:
