@@ -17,6 +17,9 @@ export default class GlobalNavigation extends React.Component{
                     <li>
                         <Link to="/create">New</Link>
                     </li>
+                    <li>
+                        <Link to="/admin">Admin</Link>
+                    </li>
                 </ul>
             </nav>
         );
