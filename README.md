@@ -20,8 +20,8 @@ FLUSH PRIVILEGES;
 
 ### MySQL Test Daten nach dem start:
 <details>
-  <summary>Click me</summary>
-</details>
+  <summary>db_insert_data.sql</summary>
+
 ```mysql
 /* This skript loads Data into the tables */
 
@@ -122,4 +122,4 @@ INSERT INTO Learn_Word (learn_set_id, translation, word) VALUES
 INSERT INTO Learn_Word (learn_set_id, translation, word) VALUES
 (14, 'el puente', 'die Brücke'), (14, 'la pantalla', 'der Bildschirm'), (14, 'el cuchillo', 'das Messer'), (14, 'el tenedor', 'die Gabel'), (14, 'el dinero', 'das Geld'), (14, 'la moneda', 'die Münze'), (14, 'la regla', 'die regel'), (14, 'el polvo', 'der Staub, das Pulver'), (14, 'hacia', 'in Richtung auf; nach'), (14, 'la bandera', 'die Flagge'), (14, 'la columna', 'die Säule'), (14, 'la lista', 'die Liste'), (14, 'la rueda', 'das Rad'), (14, 'la nota', 'die Notiz, die Note'), (14, 'quando viene el autobus?', 'wann kommt der Bus?'), (14, 'la puerta', 'die Tür'), (14, 'nunca', 'niemals'), (14, 'antes', 'vorher'), (14, 'comenzamos', 'beginnen'), (14, 'pescado', 'Fisch'), (14, 'acabar', 'beenden'), (14, 'sigue', 'folgt'), (14, 'cabe', 'passen'), (14, 'estudio', 'ich lerne'), (14, 'cuento', 'verlassen');
 ``
-</div>
+</details>
