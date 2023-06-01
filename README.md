@@ -3,6 +3,8 @@
 # Voraussetzungen
 
 ### MySQL vor dem start:
+<details>
+  <summary>db_initialisierung.sql</summary>
 
 /* Create new Database */
 ```mysql
@@ -17,6 +19,7 @@ CREATE USER 'quizme_user'@'localhost' IDENTIFIED BY 'quizme_password';
 GRANT ALL PRIVILEGES ON quizme_db.* TO 'quizme_user'@'localhost';
 FLUSH PRIVILEGES;
 ```
+</details>
 
 ### MySQL Test Daten nach dem start:
 <details>
