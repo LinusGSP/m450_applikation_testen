@@ -1,11 +1,11 @@
 import randomColor from "./Styling/RandomColor";
-import colors from "./Styling/colors";
 
 export default function LearnSetInfo(props) {
     /* This Component creates a information card from a learnSet */
 
     const learnSet = props.learnSet
     const classNames = props.classNames
+    const admin = props.admin
 
     // create new date from unix
     const creationDate = new Date(learnSet.creationDate)
@@ -16,7 +16,14 @@ export default function LearnSetInfo(props) {
             .catch(e => console.log(e))
         window.location.assign("/")
     }
-     
+
+    let admin_content = admin ?
+        <button style={{ backgroundColor: "red", borderRadius: "50%", border: "2px solid black", position: "absolute", top: "1.25rem", right: "1.25rem" }} onClick={(e) => {
+        console.log(e);
+        deleteLearnSet(learnSet.id);
+        e.stopPropagation()
+    }}>X
+        </button> : <></>
 
     return (
         <div className={classNames} onClick={() => window.location.href = `http://localhost:3000/${learnSet.id}`} style={{ backgroundColor: randomColor(), position: "relative" }}>
@@ -25,13 +32,9 @@ export default function LearnSetInfo(props) {
               <h1 className="name">
                 {learnSet.name} <br /> {learnSet.language1?.flag} ➜ {learnSet.language2?.flag}
               </h1>
-              <button style={{ backgroundColor: "red", borderRadius: "50%", border: "2px solid black", position: "absolute", top: "1.25rem", right: "1.25rem" }} onClick={(e) => {
-                  console.log(e);
-                  deleteLearnSet(learnSet.id);
-                e.stopPropagation()
-              }}>X</button>
+                {admin_content}
             </div>
-            <img />
+            <img alt=""/>
             <div className="item-2">
               <p><strong>Erstell datum:</strong> <br />{creationDate.toLocaleDateString()}</p>
               <p><strong>Zuletzt bearbeited:</strong> <br/>{lastEdited.toLocaleDateString()}</p>

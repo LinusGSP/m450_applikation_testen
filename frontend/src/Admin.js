@@ -39,7 +39,7 @@ export default class Admin extends React.Component {
         // map over every learnset
         let display_sets = this.state.learnsets.map(e => {
             return (
-                <LearnSetInfo key={e.id} learnSet={e} classNames="card hover-size" />
+                <LearnSetInfo key={e.id} learnSet={e} admin={this.state.admin} classNames="card hover-size" />
             );
         });
 
