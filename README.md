@@ -1,5 +1,18 @@
 # Voraussetzungen
 
+### Java, Maven & Node.js
+<details>
+  Java installieren, konfigurieren & Version überprüfen:      
+  $java -version
+  
+  Maven installieren,konfigurieren & Version überprüfen:
+  Windows:    Environment Variables konfigurieren
+  Linux:      sudo pacman -S maven // sudo apt-get install maven
+  
+  Node.js installieren:
+  https://nodejs.org/en/download
+</details>
+
 ### MySQL vor dem start:
 <details>
   <summary>db_initialisierung.sql</summary>
