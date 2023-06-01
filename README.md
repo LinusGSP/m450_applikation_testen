@@ -19,9 +19,9 @@ FLUSH PRIVILEGES;
 ```
 
 ### MySQL Test Daten nach dem start:
-<button class="accordion">Test Daten</button>
-<div class="panel">
-  </div>
+<details>
+  <summary>Click me</summary>
+</details>
 ```mysql
 /* This skript loads Data into the tables */
 
