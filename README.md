@@ -2,14 +2,15 @@
 
 ### Java, Maven & Node.js
 <details>
-  Java installieren, konfigurieren & Version überprüfen:      
+    <summary>Requirements</summary>
+  <h4 style="margin-bottom: 0;">Java installieren, konfigurieren & Version überprüfen: </h4>     
   $java -version
   
-  Maven installieren,konfigurieren & Version überprüfen:
+  <h4 style="margin-bottom: 0;">Maven installieren,konfigurieren & Version überprüfen: </h4> 
   Windows:    Environment Variables konfigurieren
   Linux:      sudo pacman -S maven // sudo apt-get install maven
   
-  Node.js installieren:
+  <h4 style="margin-bottom: 0;">Node.js installieren: </h4>
   https://nodejs.org/en/download
 </details>
 
