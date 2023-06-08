@@ -4,11 +4,11 @@
 <details>
     <summary>Requirements</summary>
   <h4 style="margin-bottom: 0;">Java installieren, konfigurieren & Version überprüfen:</h4>    
-  <code> $java -version </code>
+  <code>$java -version</code>
   
   <h4 style="margin-bottom: 0;">Maven installieren,konfigurieren & Version überprüfen: </h4> 
-   <b>Windows:</b>    Environment Variables konfigurieren <br>
-   <b>Linux:</b>      <code> sudo pacman -S maven // sudo apt-get install maven </code>
+   <b>Windows:</b>    <a href="https://maven.apache.org/configure.html">Environment Variables konfigurieren</a> <br>
+   <b>Linux:</b>      <code>sudo pacman -S maven // sudo apt-get install maven</code>
   
   <h4 style="margin-bottom: 0;">Node.js installieren: </h4>
   https://nodejs.org/en/download
