@@ -15,8 +15,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.time.Duration;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -47,7 +46,7 @@ class SeleniumTest {
 
     @Test
     @Description("Der basic test soll testen ob der Driver geladen werden kann indem das Element 'Title' in der Quizme Seite gesucht wird.")
-    public void basicTest() {
+    void basicTest() {
         driver.get("http://localhost:3000");
         String title = driver.getTitle();
         assertEquals("Quiz Me", title);
@@ -56,7 +55,7 @@ class SeleniumTest {
 
     @Test
     @Description("Create a new Learnset with name 'Learnset-1' DE -> GB")
-    public void CreateLearnset() throws InterruptedException {
+    void CreateLearnset() throws InterruptedException {
         // Navigate to the application URL
         driver.get("http://localhost:3000/");
 
@@ -77,18 +76,21 @@ class SeleniumTest {
         driver.findElement(By.cssSelector("#root > div > div > div:nth-child(4) > button")).click();
 
         driver.get("http://localhost:3000/");
-        Thread.sleep(1000);
+
+        new WebDriverWait(driver, Duration.ofSeconds(1)).until(
+                ExpectedConditions.presenceOfElementLocated(By.cssSelector(".card"))
+        );
 
         List<WebElement> cards = driver.findElements(By.cssSelector(".card"));
         WebElement x = cards.get(cards.toArray().length - 1);
 
-        assertEquals(false, x.getText().isEmpty());
+        assertFalse(x.getText().isEmpty());
     }
 
 
     @Test
     @Description("Enter any learnset")
-    public void EnterLearnset() {
+    void EnterLearnset() {
         driver.get("http://localhost:3000/");
 
         new WebDriverWait(driver, Duration.ofSeconds(1)).until(
@@ -98,12 +100,12 @@ class SeleniumTest {
 
         String actualUrl = driver.getCurrentUrl();
         int result = Integer.parseInt(String.valueOf(actualUrl.charAt(actualUrl.length() - 1)));
-        assertNotNull(result);
+        assertNotEquals(-1, result);
     }
 
     @Test
     @Description("Dieser Test prüft die Abfrage der Lernwörter und ob diese korrekt validiert werden.")
-    public void checkCorrectWordValidation() {
+    void checkCorrectWordValidation() {
         driver.get("http://localhost:3000/");
 
         new WebDriverWait(driver, Duration.ofSeconds(1)).until(
@@ -125,25 +127,25 @@ class SeleniumTest {
         Alert alert = driver.switchTo().alert();
         String alertText = alert.getText();
 
-        assertEquals(alertText, "Wrong, try again");
+        assertEquals("Wrong, try again", alertText);
     }
 
     @Test
     @Description("Dieser Test prüft ob man sich mit dem admin passwort '12345' einloggen kann")
-    public void checkAdminPage() {
+    void checkAdminPage() {
         driver.get("http://localhost:3000/");
         driver.findElement(By.linkText("Admin")).click();
         WebElement inputField = driver.findElement(By.id("password"));
 
         inputField.sendKeys("12345");
         driver.findElement(By.xpath("//*[text()='Submit']")).click();
-        assertEquals(driver.getCurrentUrl(), "http://localhost:3000/admin");
+        assertEquals("http://localhost:3000/admin", driver.getCurrentUrl());
     }
 
 
     @Test
     @Description("Dieser Test prüft ob man auf der Admin page die Lernsets deleten kann")
-    public void checkAdminDeletion() {
+    void checkAdminDeletion() {
         driver.get("http://localhost:3000/");
         driver.findElement(By.linkText("Admin")).click();
         WebElement inputField = driver.findElement(By.id("password"));
